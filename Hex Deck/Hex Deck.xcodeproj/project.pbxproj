@@ -17,6 +17,8 @@
 		73A706B41B825694005312BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A706B31B825694005312BE /* GameKit.framework */; };
 		73A706B91B8259CC005312BE /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706B81B8259CC005312BE /* GameDelegate.swift */; };
 		73A706BB1B826EA9005312BE /* HexGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706BA1B826EA9005312BE /* HexGame.swift */; };
+		73A706BE1B827483005312BE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706BD1B827483005312BE /* CardView.swift */; };
+		73A706C31B82785A005312BE /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C21B82785A005312BE /* CardStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		73A706B31B825694005312BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		73A706B81B8259CC005312BE /* GameDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		73A706BA1B826EA9005312BE /* HexGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexGame.swift; sourceTree = "<group>"; };
+		73A706BD1B827483005312BE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		73A706C21B82785A005312BE /* CardStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		A73BD4259F04FBBDF1360112 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73CB58B5AEE81E778E32441 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +98,7 @@
 				73A706931B82568D005312BE /* AppDelegate.swift */,
 				73A706B81B8259CC005312BE /* GameDelegate.swift */,
 				73A706951B82568D005312BE /* ViewController.swift */,
+				73A706BF1B827487005312BE /* Views */,
 				73A706BC1B826EAC005312BE /* Models */,
 				73A706971B82568D005312BE /* Main.storyboard */,
 				73A7069A1B82568D005312BE /* Images.xcassets */,
@@ -135,6 +140,15 @@
 				73A706BA1B826EA9005312BE /* HexGame.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		73A706BF1B827487005312BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73A706BD1B827483005312BE /* CardView.swift */,
+				73A706C21B82785A005312BE /* CardStackView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		7C82F8B84F01840ADB92CB11 /* Pods */ = {
@@ -314,7 +328,9 @@
 				73A706B91B8259CC005312BE /* GameDelegate.swift in Sources */,
 				73A706961B82568D005312BE /* ViewController.swift in Sources */,
 				73A706941B82568D005312BE /* AppDelegate.swift in Sources */,
+				73A706C31B82785A005312BE /* CardStackView.swift in Sources */,
 				73A706BB1B826EA9005312BE /* HexGame.swift in Sources */,
+				73A706BE1B827483005312BE /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
