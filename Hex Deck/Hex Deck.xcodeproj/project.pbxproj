@@ -19,6 +19,10 @@
 		73A706BB1B826EA9005312BE /* HexGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706BA1B826EA9005312BE /* HexGame.swift */; };
 		73A706BE1B827483005312BE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706BD1B827483005312BE /* CardView.swift */; };
 		73A706C31B82785A005312BE /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C21B82785A005312BE /* CardStackView.swift */; };
+		73A706C51B828346005312BE /* ColorCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A706C41B828346005312BE /* ColorCardView.xib */; };
+		73A706C71B828425005312BE /* ColorCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C61B828425005312BE /* ColorCardView.swift */; };
+		73A706CA1B829544005312BE /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C91B829544005312BE /* UIColor+Hex.swift */; };
+		73A706CD1B82994F005312BE /* Arvo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A706CC1B82994F005312BE /* Arvo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		73A706BA1B826EA9005312BE /* HexGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexGame.swift; sourceTree = "<group>"; };
 		73A706BD1B827483005312BE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		73A706C21B82785A005312BE /* CardStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
+		73A706C41B828346005312BE /* ColorCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCardView.xib; sourceTree = "<group>"; };
+		73A706C61B828425005312BE /* ColorCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCardView.swift; sourceTree = "<group>"; };
+		73A706C91B829544005312BE /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		73A706CC1B82994F005312BE /* Arvo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arvo-Regular.ttf"; sourceTree = "<group>"; };
 		A73BD4259F04FBBDF1360112 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73CB58B5AEE81E778E32441 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,11 +106,14 @@
 				73A706931B82568D005312BE /* AppDelegate.swift */,
 				73A706B81B8259CC005312BE /* GameDelegate.swift */,
 				73A706951B82568D005312BE /* ViewController.swift */,
-				73A706BF1B827487005312BE /* Views */,
-				73A706BC1B826EAC005312BE /* Models */,
 				73A706971B82568D005312BE /* Main.storyboard */,
+				73A706BF1B827487005312BE /* Global Views */,
+				73A706C81B828428005312BE /* Views */,
+				73A706BC1B826EAC005312BE /* Models */,
+				73A706CB1B829548005312BE /* Categories */,
 				73A7069A1B82568D005312BE /* Images.xcassets */,
 				73A7069C1B82568D005312BE /* LaunchScreen.xib */,
+				73A706CC1B82994F005312BE /* Arvo-Regular.ttf */,
 				73A706911B82568D005312BE /* Supporting Files */,
 			);
 			path = "Hex Deck";
@@ -142,13 +153,30 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		73A706BF1B827487005312BE /* Views */ = {
+		73A706BF1B827487005312BE /* Global Views */ = {
 			isa = PBXGroup;
 			children = (
 				73A706BD1B827483005312BE /* CardView.swift */,
 				73A706C21B82785A005312BE /* CardStackView.swift */,
 			);
+			name = "Global Views";
+			sourceTree = "<group>";
+		};
+		73A706C81B828428005312BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73A706C61B828425005312BE /* ColorCardView.swift */,
+				73A706C41B828346005312BE /* ColorCardView.xib */,
+			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		73A706CB1B829548005312BE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				73A706C91B829544005312BE /* UIColor+Hex.swift */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		7C82F8B84F01840ADB92CB11 /* Pods */ = {
@@ -258,7 +286,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A706991B82568D005312BE /* Main.storyboard in Resources */,
+				73A706CD1B82994F005312BE /* Arvo-Regular.ttf in Resources */,
 				73A7069E1B82568D005312BE /* LaunchScreen.xib in Resources */,
+				73A706C51B828346005312BE /* ColorCardView.xib in Resources */,
 				73A7069B1B82568D005312BE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,8 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A706B91B8259CC005312BE /* GameDelegate.swift in Sources */,
+				73A706CA1B829544005312BE /* UIColor+Hex.swift in Sources */,
 				73A706961B82568D005312BE /* ViewController.swift in Sources */,
 				73A706941B82568D005312BE /* AppDelegate.swift in Sources */,
+				73A706C71B828425005312BE /* ColorCardView.swift in Sources */,
 				73A706C31B82785A005312BE /* CardStackView.swift in Sources */,
 				73A706BB1B826EA9005312BE /* HexGame.swift in Sources */,
 				73A706BE1B827483005312BE /* CardView.swift in Sources */,

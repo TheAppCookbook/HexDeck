@@ -18,20 +18,27 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         AppDelegate.sharedGameDelegate.authenticateLocalPlayer() {
             AppDelegate.sharedGameDelegate.joinGlobalMatch() {
+                self.cardStackView.reloadData()
             }
         }
         
         self.cardStackView.dataSource = self
-        self.cardStackView.reloadData()
+        self.cardStackView.registerNibForReusableCardView("ColorCardView")
     }
 }
 
 extension ViewController: CardStackViewDataSource {
     func numberOfCardsInCardStackView(cardStackView: CardStackView) -> Int {
-        return 5
+        if let game = AppDelegate.sharedGameDelegate.game {
+            return 0xFFFFFF - game.currentCard
+        }
+        
+        return 0
     }
     
     func cardStackView(cardStackView: CardStackView, cardViewAtIndex index: Int) -> CardView {
-        return self.cardStackView.prototypeCardView?.copy() as! CardView
+        let cardView = self.cardStackView.dequeueReusableCardView() as! ColorCardView
+        cardView.hex = index
+        return cardView
     }
 }
