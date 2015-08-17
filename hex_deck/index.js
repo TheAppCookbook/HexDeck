@@ -45,7 +45,7 @@ socketServer.on("connection", function(socket) {
             console.log("drag started")
             socketServer.broadcast({
                 event: "drag_started",
-                player_id: eventInfo.playerID
+                player_id: eventInfo.player_id
             })
         }
         
@@ -66,7 +66,6 @@ socketServer.on("connection", function(socket) {
             return _socket != socket
         })
         
-        console.log(socketServer.sockets)
         console.log("closed")
     })
 })

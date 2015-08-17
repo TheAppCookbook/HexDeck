@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>07462FF2-BC5F-4CF1-BD1A-6187CE812CCD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hex Deck</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7157E17C1C11CE2FA667E1C2C7FFD8BCDA5CEBEC</key>
+		<string>github.com:TheAppCookbook/HexDeck.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hex Deck/Hex Deck.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7157E17C1C11CE2FA667E1C2C7FFD8BCDA5CEBEC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:TheAppCookbook/HexDeck.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7157E17C1C11CE2FA667E1C2C7FFD8BCDA5CEBEC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7157E17C1C11CE2FA667E1C2C7FFD8BCDA5CEBEC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hex%20Deck</string>
+		</dict>
+	</array>
+</dict>
+</plist>

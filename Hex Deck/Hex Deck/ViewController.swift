@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppDelegate.sharedGameDelegate.authenticateLocalPlayer() {
-            AppDelegate.sharedGameDelegate.joinGlobalMatch()
+            AppDelegate.sharedGameDelegate.joinGlobalMatch() {
+            }
         }
     }
 }

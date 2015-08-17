@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4CC5080D22D2869146CB1A9E9D117DE1 /* PBXContainerItemProxy */ = {
+		F8580B99D437F6348193484C67A4591B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -227,7 +227,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				98B018ACC188E9AC2C4BE098C5308944 /* PBXTargetDependency */,
+				933263AC3660B50ED164269DDAD97598 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
@@ -282,11 +282,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		98B018ACC188E9AC2C4BE098C5308944 /* PBXTargetDependency */ = {
+		933263AC3660B50ED164269DDAD97598 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SocketRocket;
 			target = 11312917E634C03D2FCFB83433D92169 /* SocketRocket */;
-			targetProxy = 4CC5080D22D2869146CB1A9E9D117DE1 /* PBXContainerItemProxy */;
+			targetProxy = F8580B99D437F6348193484C67A4591B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

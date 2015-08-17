@@ -14,8 +14,9 @@ class GameDelegate: NSObject {
     // MARK: Properties
     private var webSocket: SRWebSocket
     private var authCompletion: (() -> Void)?
+    private var joinCompletion: (() -> Void)?
 
-    var game: HexGame?
+    private(set) var game: HexGame?
     
     // MARK: Initializers
     override init() {
@@ -33,13 +34,24 @@ class GameDelegate: NSObject {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
+    // MARK: Game Responders
+    func cardDragWasStarted() {
+        self.webSocket(self.webSocket, sendMessage: [
+            "event": "drag_started",
+            "player_id": GKLocalPlayer.localPlayer().playerID
+        ])
+    }
+    
+    func cardDragWasCompleted() {
+        self.webSocket(self.webSocket, sendMessage: [
+            "event": "drag_completed",
+            "player_id": GKLocalPlayer.localPlayer().playerID
+        ])
+    }
 }
 
 extension GameDelegate: SRWebSocketDelegate {
-    func webSocketDidOpen(webSocket: SRWebSocket!) {
-    
-    }
-    
     func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
         let eventInfo: NSDictionary = NSJSONSerialization.JSONObjectWithData(message.dataUsingEncoding(NSUTF8StringEncoding)!,
             options: nil,
@@ -50,13 +62,11 @@ extension GameDelegate: SRWebSocketDelegate {
             self.game = HexGame(id: NSUUID(UUIDString: eventInfo["game_id"] as! String)!,
                 currentCard: eventInfo["current_card"] as! Int)
             
-            println(self.game?.currentCard)
-            sleep(3)
-            self.webSocket(webSocket, sendMessage: ["event": "drag_completed", "player_id": GKLocalPlayer.localPlayer().playerID])
+            self.joinCompletion?()
+            self.joinCompletion = nil
             
         case "card_taken":
             self.game?.currentCard = eventInfo["current_card"] as! Int
-            println(self.game?.currentCard)
             
         default:
             println("Unhandled event \(eventInfo)")
@@ -114,7 +124,8 @@ extension GameDelegate { // Authenication Handlers
 }
 
 extension GameDelegate { // Match Handlers
-    func joinGlobalMatch() {
+    func joinGlobalMatch(completion: () -> Void) {
+        self.joinCompletion = completion
         self.webSocket.open()
     }
 }
