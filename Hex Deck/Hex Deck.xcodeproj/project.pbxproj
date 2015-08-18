@@ -11,6 +11,7 @@
 		73365C1C1B82AAC900ADEF1E /* TapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73365C1B1B82AAC900ADEF1E /* TapView.swift */; };
 		734F974D1B82DA7B00896837 /* RipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734F974C1B82DA7B00896837 /* RipViewController.swift */; };
 		734F974F1B82E56300896837 /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734F974E1B82E56300896837 /* WinViewController.swift */; };
+		734F97521B82EEC100896837 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734F97511B82EEC100896837 /* QuartzCore.framework */; };
 		73A706941B82568D005312BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706931B82568D005312BE /* AppDelegate.swift */; };
 		73A706961B82568D005312BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706951B82568D005312BE /* ViewController.swift */; };
 		73A706991B82568D005312BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A706971B82568D005312BE /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		73365C1B1B82AAC900ADEF1E /* TapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
 		734F974C1B82DA7B00896837 /* RipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RipViewController.swift; sourceTree = "<group>"; };
 		734F974E1B82E56300896837 /* WinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
+		734F97511B82EEC100896837 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		73A7068E1B82568D005312BE /* Hex Deck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hex Deck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A706921B82568D005312BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73A706931B82568D005312BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				734F97521B82EEC100896837 /* QuartzCore.framework in Frameworks */,
 				73A706B41B825694005312BE /* GameKit.framework in Frameworks */,
 				17108328E896730294B7F753 /* Pods.framework in Frameworks */,
 			);
@@ -123,8 +126,8 @@
 				73A706931B82568D005312BE /* AppDelegate.swift */,
 				73A706B81B8259CC005312BE /* GameDelegate.swift */,
 				734F97501B82E56800896837 /* View Controllers */,
-				73A706BF1B827487005312BE /* Global Views */,
 				73A706C81B828428005312BE /* Views */,
+				73A706BF1B827487005312BE /* Global Views */,
 				73A706BC1B826EAC005312BE /* Models */,
 				73A706CB1B829548005312BE /* Categories */,
 				73A7069A1B82568D005312BE /* Images.xcassets */,
@@ -208,6 +211,7 @@
 		F19D4AEC188BD795E87620B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				734F97511B82EEC100896837 /* QuartzCore.framework */,
 				A73BD4259F04FBBDF1360112 /* Pods.framework */,
 			);
 			name = Frameworks;
