@@ -47,7 +47,7 @@
             <connections>
                 <outlet property="hexLabel" destination="LsI-Gg-pNX" id="NhG-CS-aSO"/>
             </connections>
-            <point key="canvasLocation" x="244.5" y="-19.5"/>
+            <point key="canvasLocation" x="144.5" y="-29.5"/>
         </view>
     </objects>
 </document>

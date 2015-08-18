@@ -19,21 +19,36 @@ class ColorCardView: CardView {
         }
     }
     
+    // MARK: Swipe Handlers
+    func swipeUp() {
+        if let superview = self.superview {
+            UIView.animateWithDuration(0.33, animations: {
+                self.center = CGPoint(x: self.center.x, y: CGRectGetMinY(superview.frame) - self.bounds.height)
+            }, completion: { (finished: Bool) in
+                self.removeFromSuperview()
+            })
+        } else {
+            self.removeFromSuperview()
+        }
+    }
+    
+    func swipeDown() {
+        if let superview = self.superview {
+            UIView.animateWithDuration(0.33, animations: {
+                self.center = CGPoint(x: self.center.x, y: CGRectGetMaxY(superview.frame) + self.bounds.height)
+            }, completion: { (finished: Bool) in
+                self.removeFromSuperview()
+            })
+        } else {
+            self.removeFromSuperview()
+        }
+    }
+    
     // MARK: Touch Handlers
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch = touches.first as? UITouch
-        if var location = touch?.locationInView(self.superview) {
-            let yDistance = (location.y - self.originalOrigin.y)
-            if yDistance > (self.bounds.height / 2.0) {
-                UIView.animateWithDuration(0.33, animations: {
-                    self.center = CGPoint(x: self.center.x,
-                        y: CGRectGetMaxY(self.superview!.frame) + self.bounds.height)
-                }, completion: { (finished: Bool) in
-                    self.removeFromSuperview()
-                })
-                
-                return
-            }
+        if CGRectGetMidY(self.frame) > (self.frame.height / 2.0) {
+            self.swipeDown()
+            return
         }
         
         super.touchesEnded(touches, withEvent: event)

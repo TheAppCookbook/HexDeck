@@ -13,15 +13,24 @@ import UIKit
     func cardStackView(cardStackView: CardStackView, cardViewAtIndex index: Int) -> CardView
 }
 
+@objc protocol CardStackViewDelegate: NSObjectProtocol {
+    optional func cardStackView(cardStackView: CardStackView, cardWasTappedAtPoint point: CGPoint)
+    optional func cardStackViewCardWasReleased(cardStackView: CardStackView)
+    optional func cardStackView(cardStackView: CardStackView, cardWasSwipedOffFromIndex: Int, swipedDown: Bool)
+}
+
 class CardStackView: UIView {
     // MARK: Class Properties
     private static let numberOfVisibleCards = 2
     
     // MARK: Properties
     @IBOutlet var dataSource: CardStackViewDataSource?
+    @IBOutlet var delegate: CardStackViewDelegate?
     
-    private var bottomCardView: CardView?
-    private var currentCardIndex: Int = 0
+    private(set) var topCardView: CardView?
+    private(set) var bottomCardView: CardView?
+    
+    var currentCardIndex: Int = 0
     
     private var reuseNibName: String?
     private var queuedReusableCardViews: [CardView] = []
@@ -29,7 +38,6 @@ class CardStackView: UIView {
     // MARK: Queueing
     func registerNibForReusableCardView(nibName: String) {
         self.reuseNibName = nibName
-        
     }
     
     func dequeueReusableCardView() -> CardView {
@@ -50,24 +58,35 @@ class CardStackView: UIView {
         }
         
         cardView?.frame.origin = CGPoint.zeroPoint
+        
+        let subviews = (cardView?.subviews as? [UIView])?.filter { $0.isKindOfClass(TapView.self) }
+        for subview in subviews ?? [] {
+            subview.removeFromSuperview()
+        }
+        
         return cardView!
     }
     
     // MARK: Data Handlers
-    func reloadData() {
+    func reloadData(fromIndex index: Int) {
         for subview in self.subviews {
             subview.removeFromSuperview()
         }
         
         if let dataSource = self.dataSource {
-            let numberOfCards = min(dataSource.numberOfCardsInCardStackView(self), CardStackView.numberOfVisibleCards)
-            for var index = 0; index < numberOfCards; index++ {
+            let numberOfCards = min(dataSource.numberOfCardsInCardStackView(self), CardStackView.numberOfVisibleCards) + index
+            for var index = index; index < numberOfCards; index++ {
                 self.addCardAtIndex(index)
             }
         }
     }
     
-    private func cardViewWasRemoved() {
+    private func cardViewWasRemoved(cardView: CardView) {
+        if let delegate = self.delegate {
+            let swipedDown = cardView.frame.origin.y >= 0
+            delegate.cardStackView?(self, cardWasSwipedOffFromIndex: self.currentCardIndex, swipedDown: swipedDown)
+        }
+        
         if let dataSource = self.dataSource {
             let numberOfCards = dataSource.numberOfCardsInCardStackView(self)
             if self.currentCardIndex + 1 <= numberOfCards {
@@ -81,8 +100,16 @@ class CardStackView: UIView {
             let cardView = dataSource.cardStackView(self,
                 cardViewAtIndex: index)
             
+            cardView.tapHandler = { [unowned self] (location: CGPoint) in
+                self.delegate?.cardStackView?(self, cardWasTappedAtPoint: location)
+            }
+            
+            cardView.untapHandler = { [unowned self] in
+                self.delegate?.cardStackViewCardWasReleased?(self)
+            }
+            
             cardView.removalHandler = { [unowned self] in
-                self.cardViewWasRemoved()
+                self.cardViewWasRemoved(cardView)
             }
             
             if let bottomCardView = self.bottomCardView {
@@ -92,8 +119,10 @@ class CardStackView: UIView {
                 self.addSubview(cardView)
             }
             
-            self.bottomCardView = cardView            
-            self.currentCardIndex += 1
+            self.topCardView = self.bottomCardView
+            self.bottomCardView = cardView
+            
+            self.currentCardIndex = index
         }
     }
 }

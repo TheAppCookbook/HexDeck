@@ -11,6 +11,11 @@ import GameKit
 import SocketRocket
 
 class GameDelegate: NSObject {
+    // MARK: Constants
+    static let DidReceiveCardDragStartNotification: String = "GameDelegateDidReceiveCardDragStartNotification"
+    static let DidReceiveCardDragCanceledNotification: String = "GameDelegateDidReceiveCardDragCanceledNotification"
+    static let DidReceiveCardDragCompletionNotification: String = "GameDelegateDidReceiveCardDragCompletionNotification"
+    
     // MARK: Properties
     private var webSocket: SRWebSocket
     private var authCompletion: (() -> Void)?
@@ -20,7 +25,7 @@ class GameDelegate: NSObject {
     
     // MARK: Initializers
     override init() {
-        self.webSocket = SRWebSocket(URL: NSURL(string: "ws://localhost:5000")!)
+        self.webSocket = SRWebSocket(URL: NSURL(string: "ws://10.0.1.7:5000")!)
         
         super.init()
         self.webSocket.delegate = self
@@ -36,14 +41,23 @@ class GameDelegate: NSObject {
     }
     
     // MARK: Game Responders
-    func cardDragWasStarted() {
+    func cardDragWasStarted(point: CGPoint) {
         self.webSocket(self.webSocket, sendMessage: [
             "event": "drag_started",
+            "player_id": GKLocalPlayer.localPlayer().playerID,
+            "location": NSStringFromCGPoint(point)
+        ])
+    }
+    
+    func cardDragWasCanceled() {
+        self.webSocket(self.webSocket, sendMessage: [
+            "event": "drag_canceled",
             "player_id": GKLocalPlayer.localPlayer().playerID
         ])
     }
     
     func cardDragWasCompleted() {
+        self.game?.currentCard
         self.webSocket(self.webSocket, sendMessage: [
             "event": "drag_completed",
             "player_id": GKLocalPlayer.localPlayer().playerID
@@ -65,8 +79,19 @@ extension GameDelegate: SRWebSocketDelegate {
             self.joinCompletion?()
             self.joinCompletion = nil
             
+        case "drag_started":
+            NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveCardDragStartNotification,
+                object: eventInfo["player_id"],
+                userInfo: ["location": eventInfo["location"] as! String])
+            
+        case "drag_canceled":
+            NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveCardDragCanceledNotification,
+                object: eventInfo["player_id"])
+            
         case "card_taken":
             self.game?.currentCard = eventInfo["current_card"] as! Int
+            NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveCardDragCompletionNotification,
+                object: eventInfo["player_id"])
             
         default:
             println("Unhandled event \(eventInfo)")
@@ -105,13 +130,15 @@ extension GameDelegate { // Authenication Handlers
         
         self.authCompletion = completion
         GKLocalPlayer.localPlayer().authenticateHandler = { (authVC: UIViewController!, error: NSError!) in
-            if authVC != nil {
+            if GKLocalPlayer.localPlayer().authenticated {
+                self.authCompletion?()
+                self.authCompletion = nil
+            } else if authVC != nil {
                 let rootVC = UIApplication.sharedApplication().delegate?.window??.rootViewController
-                rootVC?.presentViewController(authVC, animated: true) {
-                    GKLocalPlayer.localPlayer().authenticateHandler = nil
-                }
+                rootVC?.presentViewController(authVC, animated: true) { }
             } else {
                 self.authCompletion?()
+                self.authCompletion = nil
             }
         }
     }

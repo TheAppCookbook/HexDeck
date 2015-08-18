@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17108328E896730294B7F753 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73BD4259F04FBBDF1360112 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		73365C1C1B82AAC900ADEF1E /* TapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73365C1B1B82AAC900ADEF1E /* TapView.swift */; };
 		73A706941B82568D005312BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706931B82568D005312BE /* AppDelegate.swift */; };
 		73A706961B82568D005312BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706951B82568D005312BE /* ViewController.swift */; };
 		73A706991B82568D005312BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A706971B82568D005312BE /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		6FBDB886C2058C762E072F29 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		73365C1B1B82AAC900ADEF1E /* TapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
 		73A7068E1B82568D005312BE /* Hex Deck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hex Deck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A706921B82568D005312BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73A706931B82568D005312BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				73A706BD1B827483005312BE /* CardView.swift */,
 				73A706C21B82785A005312BE /* CardStackView.swift */,
+				73365C1B1B82AAC900ADEF1E /* TapView.swift */,
 			);
 			name = "Global Views";
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				73A706C31B82785A005312BE /* CardStackView.swift in Sources */,
 				73A706BB1B826EA9005312BE /* HexGame.swift in Sources */,
 				73A706BE1B827483005312BE /* CardView.swift in Sources */,
+				73365C1C1B82AAC900ADEF1E /* TapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

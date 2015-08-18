@@ -40,13 +40,24 @@ socketServer.on("connection", function(socket) {
     
     // MARK: Event Responders
     socket.on("message", function(data) {
+        console.log("message")
+    
         eventInfo = JSON.parse(data)
         if (eventInfo.event == "drag_started") {
             console.log("drag started")
-            socketServer.broadcast({
+            socketServer.broadcast(JSON.stringify({
                 event: "drag_started",
+                player_id: eventInfo.player_id,
+                location: eventInfo.location
+            }))
+        }
+        
+        else if (eventInfo.event == "drag_canceled") {
+            console.log("drag canceled")
+            socketServer.broadcast(JSON.stringify({
+                event: "drag_canceled",
                 player_id: eventInfo.player_id
-            })
+            }))
         }
         
         else if (eventInfo.event == "drag_completed") {

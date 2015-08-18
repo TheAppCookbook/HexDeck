@@ -13,17 +13,95 @@ class ViewController: UIViewController {
     // MARK: Properties
     @IBOutlet var cardStackView: CardStackView!
     
+    // MARK: Initializers
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     // MARK: Lifecycle
+    override func viewDidLoad() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "cardDragDidBegin:",
+            name: GameDelegate.DidReceiveCardDragStartNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "cardDragWasCanceled:",
+            name: GameDelegate.DidReceiveCardDragCanceledNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "cardDragDidComplete:",
+            name: GameDelegate.DidReceiveCardDragCompletionNotification,
+            object: nil)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppDelegate.sharedGameDelegate.authenticateLocalPlayer() {
             AppDelegate.sharedGameDelegate.joinGlobalMatch() {
-                self.cardStackView.reloadData()
+                self.cardStackView.reloadData(fromIndex: AppDelegate.sharedGameDelegate.game!.currentCard)
             }
         }
         
         self.cardStackView.dataSource = self
+        self.cardStackView.delegate = self
         self.cardStackView.registerNibForReusableCardView("ColorCardView")
+    }
+    
+    // MARK: Responders
+    func cardDragDidBegin(notification: NSNotification!) {
+        let userID = notification.object as? String
+        if userID == GKLocalPlayer.localPlayer().playerID {
+            return
+        }
+        
+        let location = CGPointFromString(notification.userInfo!["location"] as! String)
+        self.addTapViewAtPoint(location, forUser: userID!)
+    }
+    
+    func cardDragWasCanceled(notification: NSNotification!) {
+        self.removeTapViewsForIdentifiers([notification.object as! String])
+    }
+    
+    func cardDragDidComplete(notification: NSNotification!) {
+        if (notification.object as? String) == GKLocalPlayer.localPlayer().playerID {
+            return
+        }
+        
+        if let topCardView = self.cardStackView.topCardView as? ColorCardView {
+            topCardView.swipeUp()
+        }
+    }
+    
+    // MARK: Tap Handlers
+    func addTapViewAtPoint(point: CGPoint, forUser userID: String) {
+        let size: CGFloat = 90.0
+        var frame = CGRect(x: point.x - (size / 2.0),
+            y: point.y - (size / 2.0),
+            width: size,
+            height: size)
+        
+        let tapView = TapView(frame: frame)
+        tapView.identifier = userID
+        tapView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.10)
+        
+        self.cardStackView.topCardView?.addSubview(tapView)
+        
+        if userID == GKLocalPlayer.localPlayer().playerID {
+            AppDelegate.sharedGameDelegate.cardDragWasStarted(point)
+        }
+    }
+    
+    func removeTapViewsForIdentifiers(identifiers: [String]) {
+        let tapViews = self.cardStackView.topCardView?.subviews.filter {
+            $0.isKindOfClass(TapView.self) &&
+            find(identifiers, ($0 as! TapView).identifier) != nil
+        } as! [UIView]
+        
+        for tapView in tapViews  {
+            tapView.removeFromSuperview()
+        }
     }
 }
 
@@ -40,5 +118,22 @@ extension ViewController: CardStackViewDataSource {
         let cardView = self.cardStackView.dequeueReusableCardView() as! ColorCardView
         cardView.hex = index
         return cardView
+    }
+}
+
+extension ViewController: CardStackViewDelegate {
+    func cardStackView(cardStackView: CardStackView, cardWasTappedAtPoint point: CGPoint) {
+        self.addTapViewAtPoint(point, forUser: GKLocalPlayer.localPlayer().playerID)
+    }
+    
+    func cardStackViewCardWasReleased(cardStackView: CardStackView) {
+        AppDelegate.sharedGameDelegate.cardDragWasCanceled()
+        self.removeTapViewsForIdentifiers([GKLocalPlayer.localPlayer().playerID])
+    }
+    
+    func cardStackView(cardStackView: CardStackView, cardWasSwipedOffFromIndex: Int, swipedDown: Bool) {
+        if swipedDown {
+            AppDelegate.sharedGameDelegate.cardDragWasCompleted()
+        }
     }
 }

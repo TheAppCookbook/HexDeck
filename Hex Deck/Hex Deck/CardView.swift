@@ -68,6 +68,9 @@ import UIKit
     
     private(set) internal var originalOrigin: CGPoint = CGPoint.zeroPoint
     
+    internal var tapHandler: ((CGPoint) -> Void)?
+    internal var untapHandler: (() -> Void)?
+    
     internal var removalHandler: (() -> Void)?
     
     // MARK: Lifecycle Handlers
@@ -79,6 +82,7 @@ import UIKit
     // MARK: Touch Handlers
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.originalOrigin = self.frame.origin
+        self.tapHandler?((touches.first as! UITouch).locationInView(self.superview))
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -113,5 +117,7 @@ import UIKit
                 self.frame = frame
             }
         }
+        
+        self.untapHandler?()
     }
 }
