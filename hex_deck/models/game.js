@@ -5,7 +5,7 @@ exports.Game = function() {
     this.id = uuid.v4()
     this.currentCard = 0x000000
     
-    this.dragAttempts = 0 // assumes currentCard
+    this.dragAttempts = {}
     this.collisionWindow = 250 //ms
     
     this.previousCard = function() {
@@ -21,17 +21,22 @@ exports.Game = function() {
     }
     
     this.handleDrag = function(dragInfo, success, collision) {
-        this.dragAttempts += 1
+        var dragID = dragInfo.card_index + ''
+        
+        this.dragAttempts[dragID] = (this.dragAttempts[dragID] || new Set())
+        this.dragAttempts[dragID].add(dragInfo.player_id)
     
         var self = this
         setTimeout(function() {
-            var dragAttempts = self.dragAttempts         
-            self.dragAttempts = 0
+            console.log(self.dragAttempts)
             
-            if (dragAttempts == 1) {
+            var dragAttempts = (self.dragAttempts[dragID] || new Set())
+            delete self.dragAttempts[dragID]
+            
+            if (dragAttempts.size == 1) {
                 self.currentCard = self.nextCard()
                 success(self)
-            } else if (dragAttempts > 1) {
+            } else if (dragAttempts.size > 1) {
                 self.currentCard = 0x000000
                 collision(self)
             }
