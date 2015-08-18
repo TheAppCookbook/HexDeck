@@ -117,7 +117,12 @@ class ViewController: UIViewController {
         
         if (notification.object as? String) == GKLocalPlayer.localPlayer().playerID {
             AppDelegate.sharedGameDelegate.game?.localPlayerColors.append(cardIndex - 1)
+            
             self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)])
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
+                atScrollPosition: .Top,
+                animated: true)
+            
             return
         }
         
