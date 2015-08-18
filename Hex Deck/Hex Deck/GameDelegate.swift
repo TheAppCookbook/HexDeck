@@ -18,7 +18,13 @@ class GameDelegate: NSObject {
     static let DidReceiveCardDragCollisionNotification: String = "GameDelegateDidReceiveCardDragCollisionNotification"
     
     // MARK: Properties
-    private var webSocket: SRWebSocket
+    private let socketURL: NSURL = NSURL(string: "ws://10.0.1.7:5000")!
+    private var webSocket: SRWebSocket {
+        didSet {
+            self.webSocket.delegate = self
+        }
+    }
+    
     private var authCompletion: (() -> Void)?
     private var joinCompletion: (() -> Void)?
 
@@ -26,11 +32,10 @@ class GameDelegate: NSObject {
     
     // MARK: Initializers
     override init() {
-        self.webSocket = SRWebSocket(URL: NSURL(string: "ws://10.0.1.7:5000")!)
-        
+        self.webSocket = SRWebSocket(URL: self.socketURL)
         super.init()
-        self.webSocket.delegate = self
         
+        self.webSocket.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "playerDidAuthenticate:",
             name: GKPlayerAuthenticationDidChangeNotificationName,
@@ -110,6 +115,16 @@ extension GameDelegate: SRWebSocketDelegate {
             error: nil)!
         let string = NSString(data: data, encoding: NSUTF8StringEncoding)
         webSocket.send(string)
+    }
+    
+    func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        self.webSocket = SRWebSocket(URL: self.socketURL)
+        self.webSocket.open()
+    }
+    
+    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
+        self.webSocket = SRWebSocket(URL: self.socketURL)
+        self.webSocket.open()
     }
 }
 
