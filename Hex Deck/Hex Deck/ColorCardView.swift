@@ -11,7 +11,7 @@ import UIKit
 class ColorCardView: CardView {
     // MARK: Properties
     @IBOutlet var hexLabel: UILabel!
-    var hex: Int = 0 {
+    var hex: Int = 0x000000 {
         didSet {
             self.hexLabel.text = String(hex: self.hex)
             self.backgroundColor = UIColor(hex: self.hex)

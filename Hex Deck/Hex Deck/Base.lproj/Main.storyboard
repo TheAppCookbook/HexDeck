@@ -8,6 +8,9 @@
     <customFonts key="customFonts">
         <mutableArray key="Arvo-Regular.ttf">
             <string>Arvo</string>
+            <string>Arvo</string>
+            <string>Arvo</string>
+            <string>Arvo</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -112,5 +115,100 @@
             </objects>
             <point key="canvasLocation" x="147" y="316"/>
         </scene>
+        <!--Rip View Controller-->
+        <scene sceneID="E8F-2K-Nh0">
+            <objects>
+                <viewController storyboardIdentifier="RipViewController" id="j5Q-Oc-Szf" customClass="RipViewController" customModule="Hex_Deck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vZx-Xs-NRG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ba6-em-rjk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="19d-0V-SYs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RippedCardTop" translatesAutoresizingMaskIntoConstraints="NO" id="dvz-4n-Akl">
+                                <rect key="frame" x="163" y="40" width="274" height="209"/>
+                                <color key="tintColor" red="0.98823529409999999" green="0.0" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dvz-4n-Akl" secondAttribute="height" multiplier="274:209" id="6Hb-NU-fUz"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RippedCardBottom" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-fS-VEn">
+                                <rect key="frame" x="163" y="351" width="274" height="209"/>
+                                <color key="tintColor" red="0.98823529409999999" green="0.0" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FJm-fS-VEn" secondAttribute="height" multiplier="274:209" id="8St-4j-d9d"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmX-u9-PYj">
+                                <rect key="frame" x="193" y="66.5" width="219" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be careful when you see someone else's fingerprints!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-zr-RCZ">
+                                <rect key="frame" x="176" y="298" width="249" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="6SC-mL-ABn"/>
+                                    <constraint firstAttribute="height" constant="47" id="XAV-xr-U95"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whoops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foG-4n-4HK">
+                                <rect key="frame" x="176" y="269" width="249" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="PeJ-DB-Tw9"/>
+                                    <constraint firstAttribute="height" constant="21" id="TBI-hM-cWx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="lYz-zr-RCZ" firstAttribute="top" secondItem="foG-4n-4HK" secondAttribute="bottom" constant="8" id="3p7-Rh-1RR"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="trailing" secondItem="ZmX-u9-PYj" secondAttribute="trailing" constant="25" id="9DP-sq-fvd"/>
+                            <constraint firstItem="foG-4n-4HK" firstAttribute="top" secondItem="dvz-4n-Akl" secondAttribute="bottom" constant="20" id="Ama-WL-o05"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="width" secondItem="FJm-fS-VEn" secondAttribute="width" id="Cbo-KY-CMH"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="leading" secondItem="ZmX-u9-PYj" secondAttribute="leading" constant="-30" id="Gzk-WA-TuG"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="top" secondItem="ZmX-u9-PYj" secondAttribute="bottom" constant="-46" id="Nxy-pi-QET"/>
+                            <constraint firstAttribute="centerX" secondItem="dvz-4n-Akl" secondAttribute="centerX" id="Xgb-bu-Ghc"/>
+                            <constraint firstItem="ba6-em-rjk" firstAttribute="top" secondItem="FJm-fS-VEn" secondAttribute="bottom" constant="40" id="Ye8-3U-HGO"/>
+                            <constraint firstItem="lYz-zr-RCZ" firstAttribute="centerX" secondItem="foG-4n-4HK" secondAttribute="centerX" id="gUD-HG-07B"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="centerX" secondItem="FJm-fS-VEn" secondAttribute="centerX" id="kOr-lA-Vjf"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="top" secondItem="vZx-Xs-NRG" secondAttribute="bottom" constant="20" id="l4k-RR-cOc"/>
+                            <constraint firstItem="FJm-fS-VEn" firstAttribute="top" secondItem="dvz-4n-Akl" secondAttribute="bottom" constant="102" id="q5i-FN-KDW"/>
+                            <constraint firstItem="dvz-4n-Akl" firstAttribute="centerX" secondItem="foG-4n-4HK" secondAttribute="centerX" constant="-0.5" id="xcR-MO-Tff"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OWB-XU-uq1" appends="YES" id="yLe-MT-QIX"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="cardLabel" destination="ZmX-u9-PYj" id="eU3-Yg-ty8"/>
+                        <outletCollection property="cardImageViews" destination="dvz-4n-Akl" collectionClass="NSMutableArray" id="27j-8t-1TA"/>
+                        <outletCollection property="cardImageViews" destination="FJm-fS-VEn" collectionClass="NSMutableArray" id="Yko-A4-iwC"/>
+                        <outletCollection property="instructionLabels" destination="foG-4n-4HK" collectionClass="NSMutableArray" id="ozX-fp-0GZ"/>
+                        <outletCollection property="instructionLabels" destination="lYz-zr-RCZ" collectionClass="NSMutableArray" id="sml-0X-hFl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yA0-sV-fdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OWB-XU-uq1">
+                    <connections>
+                        <action selector="tapGestureWasRecognized:" destination="j5Q-Oc-Szf" id="LMN-ON-UQN"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="772" y="316"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="RippedCardBottom" width="822" height="627"/>
+        <image name="RippedCardTop" width="822" height="627"/>
+    </resources>
 </document>

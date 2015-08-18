@@ -40,10 +40,7 @@ class ViewController: UIViewController {
             selector: "cardDragDidCollide:",
             name: GameDelegate.DidReceiveCardDragCollisionNotification,
             object: nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        
         AppDelegate.sharedGameDelegate.authenticateLocalPlayer() {
             AppDelegate.sharedGameDelegate.joinGlobalMatch() {
                 self.cardStackView.reloadData(fromIndex: AppDelegate.sharedGameDelegate.game!.currentCard)
@@ -76,7 +73,7 @@ class ViewController: UIViewController {
         
         if (notification.object as? String) == GKLocalPlayer.localPlayer().playerID {
             AppDelegate.sharedGameDelegate.game?.localPlayerColors.append(cardIndex - 1)
-            self.collectionView.reloadData()
+            self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)])
             return
         }
         
@@ -92,8 +89,14 @@ class ViewController: UIViewController {
     }
     
     func cardDragDidCollide(notification: NSNotification!) {
+        if let ripViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RipViewController") as? RipViewController {
+            ripViewController.hex = (self.cardStackView.topCardView as! ColorCardView).hex
+            self.presentViewController(ripViewController,
+                animated: true,
+                completion: nil)
+        }
+        
         (self.cardStackView.topCardView as? ColorCardView)?.hex = 0
-        println("FUCK!")
         self.cardStackView.reloadData(fromIndex: 0)
     }
     
