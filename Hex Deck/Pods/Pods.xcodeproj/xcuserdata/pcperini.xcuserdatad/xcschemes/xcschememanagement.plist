@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ACBInfoPanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +27,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D0BFA0D32C3028CAE4E96192DC48CB94</key>
+		<key>1C76A54E2957861725B70376C48B7551</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5649F801B515603A82C3F81B12D6980</key>
 		<dict>
 			<key>primary</key>
 			<true/>

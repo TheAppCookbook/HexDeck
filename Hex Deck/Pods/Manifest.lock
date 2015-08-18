@@ -1,10 +1,23 @@
 PODS:
+  - ACBInfoPanel (0.0.1)
   - SocketRocket (0.4)
 
 DEPENDENCIES:
+  - ACBInfoPanel (from `git@github.com:TheAppCookbook/templates.git`, branch `master`)
   - SocketRocket
 
+EXTERNAL SOURCES:
+  ACBInfoPanel:
+    :branch: master
+    :git: git@github.com:TheAppCookbook/templates.git
+
+CHECKOUT OPTIONS:
+  ACBInfoPanel:
+    :commit: c418d6be0b4ffda3c851e47191e2d6402f66fb0e
+    :git: git@github.com:TheAppCookbook/templates.git
+
 SPEC CHECKSUMS:
+  ACBInfoPanel: 186db7784366d9a331d406e02a9da58b61e1b55e
   SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
 
 COCOAPODS: 0.38.2

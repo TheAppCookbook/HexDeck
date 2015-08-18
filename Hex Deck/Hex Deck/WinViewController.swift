@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ACBInfoPanel
 
 class WinViewController: UIViewController {
     // MARK: Properties
@@ -23,6 +24,15 @@ class WinViewController: UIViewController {
     }
     
     // MARK: Responders
+    @IBAction func aboutButtonWasPressed(sender: UIButton!) {
+        let infoPanel = ACBInfoPanelViewController()
+        infoPanel.ingredient = "Hex Color Games"
+        
+        self.presentViewController(infoPanel,
+            animated: true,
+            completion: nil)
+    }
+    
     @IBAction func doneButtonWasPressed(sender: UIButton!) {
         self.presentingViewController?.dismissViewControllerAnimated(true,
             completion: nil)
