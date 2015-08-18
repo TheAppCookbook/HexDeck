@@ -15,6 +15,7 @@ class GameDelegate: NSObject {
     static let DidReceiveCardDragStartNotification: String = "GameDelegateDidReceiveCardDragStartNotification"
     static let DidReceiveCardDragCanceledNotification: String = "GameDelegateDidReceiveCardDragCanceledNotification"
     static let DidReceiveCardDragCompletionNotification: String = "GameDelegateDidReceiveCardDragCompletionNotification"
+    static let DidReceiveCardDragCollisionNotification: String = "GameDelegateDidReceiveCardDragCollisionNotification"
     
     // MARK: Properties
     private var webSocket: SRWebSocket
@@ -93,21 +94,14 @@ extension GameDelegate: SRWebSocketDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveCardDragCompletionNotification,
                 object: eventInfo["player_id"])
             
+        case "card_collided":
+            self.game?.currentCard = eventInfo["current_card"] as! Int
+            NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveCardDragCollisionNotification,
+                object: nil)
+            
         default:
             println("Unhandled event \(eventInfo)")
         }
-    }
-    
-    func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        
-    }
-    
-    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
-        
-    }
-    
-    func webSocket(webSocket: SRWebSocket!, didReceivePong pongPayload: NSData!) {
-        
     }
     
     func webSocket(webSocket: SRWebSocket!, sendMessage message: AnyObject!) {

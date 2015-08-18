@@ -44,7 +44,7 @@ socketServer.on("connection", function(socket) {
     
         eventInfo = JSON.parse(data)
         if (eventInfo.event == "drag_started") {
-            console.log("drag started")
+            console.log("drag started ", currentGame.currentCard)
             socketServer.broadcast(JSON.stringify({
                 event: "drag_started",
                 player_id: eventInfo.player_id,
@@ -53,7 +53,7 @@ socketServer.on("connection", function(socket) {
         }
         
         else if (eventInfo.event == "drag_canceled") {
-            console.log("drag canceled")
+            console.log("drag canceled ", currentGame.currentCard)
             socketServer.broadcast(JSON.stringify({
                 event: "drag_canceled",
                 player_id: eventInfo.player_id
@@ -61,14 +61,23 @@ socketServer.on("connection", function(socket) {
         }
         
         else if (eventInfo.event == "drag_completed") {
-            console.log("drag completed")
-            currentGame.currentCard = currentGame.nextCard()
+            console.log("drag completed ", currentGame.currentCard)
             
-            socketServer.broadcast(JSON.stringify({
-                event: "card_taken",
-                player_id: eventInfo.player_id,
-                current_card: currentGame.currentCard
-            }))
+            eventInfo.card_index = currentGame.currentCard
+            currentGame.handleDrag(eventInfo, function(game) {
+                console.log("drag was successful ", game.currentCard)
+                socketServer.broadcast(JSON.stringify({
+                    event: "card_taken",
+                    player_id: eventInfo.player_id,
+                    current_card: game.currentCard
+                }))
+            }, function (game) {
+                console.log("drag collided ", game.currentCard)
+                socketServer.broadcast(JSON.stringify({
+                    event: "card_collided",
+                    current_card: game.currentCard
+                }))
+            })
         }
     })
     

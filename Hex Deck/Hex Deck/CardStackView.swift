@@ -70,6 +70,7 @@ class CardStackView: UIView {
     // MARK: Data Handlers
     func reloadData(fromIndex index: Int) {
         for subview in self.subviews {
+            (subview as? CardView)?.removalHandler = nil
             subview.removeFromSuperview()
         }
         

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hex Deck/GameDelegate.swift"
-            timestampString = "461551063.764003"
+            timestampString = "461555917.613072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "authenticateLocalPlayer(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -22,15 +22,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hex Deck/ViewController.swift"
-            timestampString = "461551063.764003"
+            timestampString = "461555917.613072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "removeTapViewsForIdentifiers(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -38,32 +38,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hex Deck/ViewController.swift"
-            timestampString = "461551063.764003"
+            filePath = "Hex Deck/CardStackView.swift"
+            timestampString = "461556427.387848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "cardDragWasCanceled(_:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "reloadData(fromIndex:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hex Deck/GameDelegate.swift"
-            timestampString = "461551063.764003"
+            filePath = "Hex Deck/CardStackView.swift"
+            timestampString = "461556427.387848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "webSocket(_:didReceiveMessage:)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "reloadData(fromIndex:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

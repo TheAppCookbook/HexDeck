@@ -34,6 +34,11 @@ class ViewController: UIViewController {
             selector: "cardDragDidComplete:",
             name: GameDelegate.DidReceiveCardDragCompletionNotification,
             object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "cardDragDidCollide:",
+            name: GameDelegate.DidReceiveCardDragCollisionNotification,
+            object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -69,9 +74,22 @@ class ViewController: UIViewController {
             return
         }
         
+        // Reset, if we're out of sync
+        let cardIndex = AppDelegate.sharedGameDelegate.game!.currentCard
+        if cardIndex != self.cardStackView.currentCardIndex {
+            self.cardStackView.reloadData(fromIndex: cardIndex)
+            return
+        }
+        
         if let topCardView = self.cardStackView.topCardView as? ColorCardView {
             topCardView.swipeUp()
         }
+    }
+    
+    func cardDragDidCollide(notification: NSNotification!) {
+        (self.cardStackView.topCardView as? ColorCardView)?.hex = 0
+        println("FUCK!")
+        self.cardStackView.reloadData(fromIndex: 0)
     }
     
     // MARK: Tap Handlers
