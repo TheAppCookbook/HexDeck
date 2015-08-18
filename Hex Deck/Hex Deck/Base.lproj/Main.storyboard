@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,20 +22,20 @@
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzL-Gy-CUc" customClass="CardStackView" customModule="Hex_Deck" customModuleProvider="target">
-                                <rect key="frame" x="164" y="60" width="273" height="443"/>
+                                <rect key="frame" x="164" y="50" width="273" height="443"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="443" id="Y2P-8a-OWJ"/>
+                                    <constraint firstAttribute="width" secondItem="zzL-Gy-CUc" secondAttribute="height" multiplier="273:443" id="C4G-K2-wEi"/>
                                     <constraint firstAttribute="width" constant="273" id="Yuw-Z0-5WW"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zzL-Gy-CUc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="5FW-sV-VGL"/>
+                            <constraint firstItem="zzL-Gy-CUc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="5FW-sV-VGL"/>
                             <constraint firstItem="iKz-sc-qsW" firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" id="6kF-tk-YNC"/>
-                            <constraint firstItem="iKz-sc-qsW" firstAttribute="centerY" secondItem="zzL-Gy-CUc" secondAttribute="centerY" id="IgD-Sh-dPT"/>
-                            <constraint firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" constant="-0.5" id="s2P-9s-WOy"/>
+                            <constraint firstItem="iKz-sc-qsW" firstAttribute="centerY" secondItem="zzL-Gy-CUc" secondAttribute="centerY" constant="10" id="IgD-Sh-dPT"/>
+                            <constraint firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" id="s2P-9s-WOy"/>
                         </constraints>
                     </view>
                     <connections>
