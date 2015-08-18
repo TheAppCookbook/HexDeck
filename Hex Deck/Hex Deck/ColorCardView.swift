@@ -13,7 +13,7 @@ class ColorCardView: CardView {
     @IBOutlet var hexLabel: UILabel!
     var hex: Int = 0 {
         didSet {
-            self.hexLabel.text = NSString(format:"#%06X", self.hex) as? String
+            self.hexLabel.text = String(hex: self.hex)
             self.backgroundColor = UIColor(hex: self.hex)
             self.hexLabel.textColor = self.backgroundColor?.contrastingColor()
         }

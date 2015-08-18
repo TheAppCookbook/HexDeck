@@ -22,7 +22,7 @@
 		73A706C31B82785A005312BE /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C21B82785A005312BE /* CardStackView.swift */; };
 		73A706C51B828346005312BE /* ColorCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A706C41B828346005312BE /* ColorCardView.xib */; };
 		73A706C71B828425005312BE /* ColorCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C61B828425005312BE /* ColorCardView.swift */; };
-		73A706CA1B829544005312BE /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C91B829544005312BE /* UIColor+Hex.swift */; };
+		73A706CA1B829544005312BE /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A706C91B829544005312BE /* Hex.swift */; };
 		73A706CD1B82994F005312BE /* Arvo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A706CC1B82994F005312BE /* Arvo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +56,7 @@
 		73A706C21B82785A005312BE /* CardStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		73A706C41B828346005312BE /* ColorCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCardView.xib; sourceTree = "<group>"; };
 		73A706C61B828425005312BE /* ColorCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCardView.swift; sourceTree = "<group>"; };
-		73A706C91B829544005312BE /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		73A706C91B829544005312BE /* Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		73A706CC1B82994F005312BE /* Arvo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arvo-Regular.ttf"; sourceTree = "<group>"; };
 		A73BD4259F04FBBDF1360112 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73CB58B5AEE81E778E32441 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		73A706CB1B829548005312BE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				73A706C91B829544005312BE /* UIColor+Hex.swift */,
+				73A706C91B829544005312BE /* Hex.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A706B91B8259CC005312BE /* GameDelegate.swift in Sources */,
-				73A706CA1B829544005312BE /* UIColor+Hex.swift in Sources */,
+				73A706CA1B829544005312BE /* Hex.swift in Sources */,
 				73A706961B82568D005312BE /* ViewController.swift in Sources */,
 				73A706941B82568D005312BE /* AppDelegate.swift in Sources */,
 				73A706C71B828425005312BE /* ColorCardView.swift in Sources */,

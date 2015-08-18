@@ -60,8 +60,6 @@ import UIKit
         }
     }
     
-    @IBInspectable var reuseIdentifier: String?
-    
     @IBInspectable var dragVertically: Bool = true
     @IBInspectable var dragHorizontally: Bool = true
     @IBInspectable var anchored: Bool = false

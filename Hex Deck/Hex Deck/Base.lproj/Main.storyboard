@@ -3,7 +3,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Arvo-Regular.ttf">
+            <string>Arvo</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -18,24 +24,83 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iKz-sc-qsW">
-                                <rect key="frame" x="282" y="263" width="37" height="37"/>
+                                <rect key="frame" x="282" y="241" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzL-Gy-CUc" customClass="CardStackView" customModule="Hex_Deck" customModuleProvider="target">
-                                <rect key="frame" x="164" y="50" width="273" height="443"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-Kv-g0j">
+                                <rect key="frame" x="152" y="491" width="448" height="99"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="zzL-Gy-CUc" secondAttribute="height" multiplier="273:443" id="C4G-K2-wEi"/>
-                                    <constraint firstAttribute="width" constant="273" id="Yuw-Z0-5WW"/>
+                                    <constraint firstAttribute="height" constant="99" id="6Qv-pA-0yp"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="5" id="L9B-vk-B9m">
+                                    <size key="itemSize" width="99" height="99"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardViewCell" id="dpo-Di-OfZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v1-7I-Rk9" customClass="CardView" customModule="Hex_Deck" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="0.0" width="70" height="70"/>
+                                                    <color key="backgroundColor" red="0.87058823529999996" green="0.81568627449999997" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="0.0" height="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="0.68000000000000005"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#DED0FE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVP-qS-BQO">
+                                                    <rect key="frame" x="14" y="78" width="70" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="D06-Ma-7Qm"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzL-Gy-CUc" customClass="CardStackView" customModule="Hex_Deck" customModuleProvider="target">
+                                <rect key="frame" x="168" y="41" width="265" height="430"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zzL-Gy-CUc" secondAttribute="height" multiplier="273:443" id="8aS-Pa-v72"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zzL-Gy-CUc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="5FW-sV-VGL"/>
+                            <constraint firstItem="zzL-Gy-CUc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="21" id="5FW-sV-VGL"/>
                             <constraint firstItem="iKz-sc-qsW" firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" id="6kF-tk-YNC"/>
-                            <constraint firstItem="iKz-sc-qsW" firstAttribute="centerY" secondItem="zzL-Gy-CUc" secondAttribute="centerY" constant="10" id="IgD-Sh-dPT"/>
+                            <constraint firstItem="iKz-sc-qsW" firstAttribute="centerY" secondItem="zzL-Gy-CUc" secondAttribute="centerY" constant="4" id="IgD-Sh-dPT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m3L-Kv-g0j" secondAttribute="trailing" constant="-16" id="bov-Vi-Yuv"/>
                             <constraint firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" id="s2P-9s-WOy"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="m3L-Kv-g0j" secondAttribute="bottom" constant="10" id="wb4-fv-F0B"/>
+                            <constraint firstItem="m3L-Kv-g0j" firstAttribute="top" secondItem="zzL-Gy-CUc" secondAttribute="bottom" constant="20" id="x9A-0q-OB8"/>
+                            <constraint firstItem="zzL-Gy-CUc" firstAttribute="leading" secondItem="m3L-Kv-g0j" secondAttribute="leading" constant="16" id="xxK-En-VO0"/>
                         </constraints>
                     </view>
                     <connections>

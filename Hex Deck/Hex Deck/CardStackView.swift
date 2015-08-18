@@ -57,7 +57,7 @@ class CardStackView: UIView {
             self.queuedReusableCardViews.append(cardView!)
         }
         
-        cardView?.frame.origin = CGPoint.zeroPoint
+        cardView?.frame = self.bounds
         
         let subviews = (cardView?.subviews as? [UIView])?.filter { $0.isKindOfClass(TapView.self) }
         for subview in subviews ?? [] {

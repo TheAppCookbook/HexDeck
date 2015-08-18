@@ -1,5 +1,5 @@
 //
-//  UIColor+Hex.swift
+//  Hex.swift
 //  Hex Deck
 //
 //  Created by PATRICK PERINI on 8/17/15.
@@ -21,5 +21,11 @@ extension UIColor {
         self.getWhite(&lightness,
             alpha: nil)          
         return (lightness > 0.50) ? UIColor.blackColor() : UIColor.whiteColor()
+    }
+}
+
+extension String {
+    init(hex: Int) {
+        self.init(stringLiteral: NSString(format:"#%06X", hex) as! String)
     }
 }

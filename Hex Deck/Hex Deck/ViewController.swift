@@ -123,6 +123,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Card Stack View
 extension ViewController: CardStackViewDataSource {
     func numberOfCardsInCardStackView(cardStackView: CardStackView) -> Int {
         if let game = AppDelegate.sharedGameDelegate.game {
@@ -153,5 +154,21 @@ extension ViewController: CardStackViewDelegate {
         if swipedDown {
             AppDelegate.sharedGameDelegate.cardDragWasCompleted()
         }
+    }
+}
+
+// MARK: - Collection View
+extension ViewController: UICollectionViewDataSource {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCellWithReuseIdentifier("CardViewCell",
+            forIndexPath: indexPath) as! UICollectionViewCell
     }
 }
