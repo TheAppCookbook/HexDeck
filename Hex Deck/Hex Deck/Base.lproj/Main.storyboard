@@ -33,24 +33,24 @@
                                 <rect key="frame" x="282" y="241" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-Kv-g0j">
-                                <rect key="frame" x="152" y="491" width="448" height="99"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-Kv-g0j">
+                                <rect key="frame" x="0.0" y="491" width="600" height="99"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="6Qv-pA-0yp"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="5" id="L9B-vk-B9m">
-                                    <size key="itemSize" width="99" height="99"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="L9B-vk-B9m">
+                                    <size key="itemSize" width="109" height="99"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="22" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardViewCell" id="dpo-Di-OfZ">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="109" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v1-7I-Rk9" customClass="CardView" customModule="Hex_Deck" customModuleProvider="target">
@@ -99,6 +99,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="m3L-Kv-g0j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4Am-HB-kHy"/>
                             <constraint firstItem="zzL-Gy-CUc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="21" id="5FW-sV-VGL"/>
                             <constraint firstItem="iKz-sc-qsW" firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" id="6kF-tk-YNC"/>
                             <constraint firstItem="iKz-sc-qsW" firstAttribute="centerY" secondItem="zzL-Gy-CUc" secondAttribute="centerY" constant="4" id="IgD-Sh-dPT"/>
@@ -106,7 +107,6 @@
                             <constraint firstAttribute="centerX" secondItem="zzL-Gy-CUc" secondAttribute="centerX" id="s2P-9s-WOy"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="m3L-Kv-g0j" secondAttribute="bottom" constant="10" id="wb4-fv-F0B"/>
                             <constraint firstItem="m3L-Kv-g0j" firstAttribute="top" secondItem="zzL-Gy-CUc" secondAttribute="bottom" constant="20" id="x9A-0q-OB8"/>
-                            <constraint firstItem="zzL-Gy-CUc" firstAttribute="leading" secondItem="m3L-Kv-g0j" secondAttribute="leading" constant="16" id="xxK-En-VO0"/>
                         </constraints>
                     </view>
                     <connections>
