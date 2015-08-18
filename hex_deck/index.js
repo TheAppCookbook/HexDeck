@@ -71,6 +71,13 @@ socketServer.on("connection", function(socket) {
                     player_id: eventInfo.player_id,
                     current_card: game.currentCard
                 }))
+                
+                if (game.onLastCard()) {
+                    game.currentCard = 0
+                    socketServer.broadcast(JSON.stringify({
+                        event: "game_over"
+                    }))
+                }
             }, function (game) {
                 console.log("drag collided ", game.currentCard)
                 socketServer.broadcast(JSON.stringify({

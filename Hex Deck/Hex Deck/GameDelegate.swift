@@ -16,6 +16,7 @@ class GameDelegate: NSObject {
     static let DidReceiveCardDragCanceledNotification: String = "GameDelegateDidReceiveCardDragCanceledNotification"
     static let DidReceiveCardDragCompletionNotification: String = "GameDelegateDidReceiveCardDragCompletionNotification"
     static let DidReceiveCardDragCollisionNotification: String = "GameDelegateDidReceiveCardDragCollisionNotification"
+    static let DidReceiveGameOverNotification: String = "GameDelegateDidReceiveGameOverNotification"
     
     // MARK: Properties
     private let socketURL: NSURL = NSURL(string: "ws://10.0.1.7:5000")!
@@ -102,6 +103,11 @@ extension GameDelegate: SRWebSocketDelegate {
         case "card_collided":
             self.game?.currentCard = eventInfo["current_card"] as! Int
             NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveCardDragCollisionNotification,
+                object: nil)
+            
+        case "game_over":
+            self.game?.currentCard = 0
+            NSNotificationCenter.defaultCenter().postNotificationName(GameDelegate.DidReceiveGameOverNotification,
                 object: nil)
             
         default:

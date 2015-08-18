@@ -27,6 +27,11 @@ class ViewController: UIViewController {
             name: HexGame.WasResetNotification,
             object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "gameOver:",
+            name: GameDelegate.DidReceiveGameOverNotification,
+            object: nil)
+        
         // Drag Handlers
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "cardDragDidBegin:",
@@ -60,6 +65,13 @@ class ViewController: UIViewController {
         self.cardStackView.registerNibForReusableCardView("ColorCardView")
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if let game = AppDelegate.sharedGameDelegate.game {
+            self.collectionView.reloadData()
+            self.cardStackView.reloadData(fromIndex: game.currentCard)
+        }
+    }
+    
     // MARK: Responders
     func gameWasReset(notification: NSNotification!) {
         let alert = UIAlertController(title: "The game was reset!",
@@ -71,6 +83,17 @@ class ViewController: UIViewController {
         self.presentViewController(alert,
             animated: true,
             completion: nil)
+    }
+    
+    func gameOver(notification: NSNotification!) {
+        if let winViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WinViewController") as? WinViewController {
+            winViewController.colors = AppDelegate.sharedGameDelegate.game!.localPlayerColors
+            AppDelegate.sharedGameDelegate.game!.localPlayerColors = []
+            
+            self.presentViewController(winViewController,
+                animated: true,
+                completion: nil)
+        }
     }
     
     func cardDragDidBegin(notification: NSNotification!) {

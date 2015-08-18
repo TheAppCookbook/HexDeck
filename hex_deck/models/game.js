@@ -3,6 +3,7 @@ var exports = module.exports = {};
 
 exports.Game = function() {
     this.id = uuid.v4()
+//    this.currentCard = 0xFFFFF5
     this.currentCard = 0x000000
     
     this.dragAttempts = 0 // assumes currentCard
@@ -17,7 +18,7 @@ exports.Game = function() {
     }
     
     this.onLastCard = function() {
-        return this.currentCard >= 0xFFFFFF
+        return this.currentCard >= 0xFFFFFF || true
     }
     
     this.handleDrag = function(dragInfo, success, collision) {
