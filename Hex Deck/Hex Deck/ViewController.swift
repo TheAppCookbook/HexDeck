@@ -21,6 +21,13 @@ class ViewController: UIViewController {
     
     // MARK: Lifecycle
     override func viewDidLoad() {
+        // Game State Handlers
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "gameWasReset:",
+            name: HexGame.WasResetNotification,
+            object: nil)
+        
+        // Drag Handlers
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "cardDragDidBegin:",
             name: GameDelegate.DidReceiveCardDragStartNotification,
@@ -54,6 +61,18 @@ class ViewController: UIViewController {
     }
     
     // MARK: Responders
+    func gameWasReset(notification: NSNotification!) {
+        let alert = UIAlertController(title: "The game was reset!",
+            message: "While you were away, the game reset to #000000",
+            preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Drat!",
+            style: .Default, handler: nil))
+        
+        self.presentViewController(alert,
+            animated: true,
+            completion: nil)
+    }
+    
     func cardDragDidBegin(notification: NSNotification!) {
         let userID = notification.object as? String
         if userID == GKLocalPlayer.localPlayer().playerID {

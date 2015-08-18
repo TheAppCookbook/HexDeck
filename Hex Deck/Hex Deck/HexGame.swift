@@ -9,6 +9,9 @@
 import UIKit
 
 class HexGame {
+    // MARK: Constants
+    static let WasResetNotification: String = "HexGameWasResetNotification"
+    
     // MARK: Properties
     let id: NSUUID
     var currentCard: Int
@@ -44,6 +47,9 @@ class HexGame {
         if let dictionary = NSUserDefaults.standardUserDefaults().objectForKey("HexDeckLastPlayedGame") as? NSDictionary {
             if dictionary["id"] as! String == self.id.UUIDString {
                 self.localPlayerColors = dictionary["local_player_colors"] as! [Int]
+            } else {
+                NSNotificationCenter.defaultCenter().postNotificationName(HexGame.WasResetNotification,
+                    object: dictionary)
             }
         }
     }
