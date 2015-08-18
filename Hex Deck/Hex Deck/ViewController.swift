@@ -74,15 +74,17 @@ class ViewController: UIViewController {
     
     // MARK: Responders
     func gameWasReset(notification: NSNotification!) {
-//        let alert = UIAlertController(title: "The game was reset!",
-//            message: "While you were away, the game reset to #000000",
-//            preferredStyle: .Alert)
-//        alert.addAction(UIAlertAction(title: "Drat!",
-//            style: .Default, handler: nil))
-//        
-//        self.presentViewController(alert,
-//            animated: true,
-//            completion: nil)
+        if GKLocalPlayer.localPlayer().authenticated {
+            let alert = UIAlertController(title: "The game was reset!",
+                message: "While you were away, the game reset to #000000",
+                preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Drat!",
+                style: .Default, handler: nil))
+            
+            self.presentViewController(alert,
+                animated: true,
+                completion: nil)
+        }
     }
     
     func gameOver(notification: NSNotification!) {
