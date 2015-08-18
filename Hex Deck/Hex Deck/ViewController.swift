@@ -12,6 +12,7 @@ import GameKit
 class ViewController: UIViewController {
     // MARK: Properties
     @IBOutlet var cardStackView: CardStackView!
+    @IBOutlet var collectionView: UICollectionView!
     
     // MARK: Initializers
     deinit {
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
         AppDelegate.sharedGameDelegate.authenticateLocalPlayer() {
             AppDelegate.sharedGameDelegate.joinGlobalMatch() {
                 self.cardStackView.reloadData(fromIndex: AppDelegate.sharedGameDelegate.game!.currentCard)
+                self.collectionView.reloadData()
             }
         }
         
@@ -70,12 +72,15 @@ class ViewController: UIViewController {
     }
     
     func cardDragDidComplete(notification: NSNotification!) {
+        let cardIndex = AppDelegate.sharedGameDelegate.game!.currentCard
+        
         if (notification.object as? String) == GKLocalPlayer.localPlayer().playerID {
+            AppDelegate.sharedGameDelegate.game?.localPlayerColors.append(cardIndex - 1)
+            self.collectionView.reloadData()
             return
         }
         
         // Reset, if we're out of sync
-        let cardIndex = AppDelegate.sharedGameDelegate.game!.currentCard
         if cardIndex != self.cardStackView.currentCardIndex {
             self.cardStackView.reloadData(fromIndex: cardIndex)
             return
@@ -164,11 +169,25 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if let game = AppDelegate.sharedGameDelegate.game {
+            return game.localPlayerColors.count
+        }
+        
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("CardViewCell",
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardViewCell",
             forIndexPath: indexPath) as! UICollectionViewCell
+        
+        let color = AppDelegate.sharedGameDelegate.game!.localPlayerColors.reverse()[indexPath.item]
+        
+        let cardView = cell.viewWithTag(1) as! CardView
+        cardView.backgroundColor = UIColor(hex: color)
+        
+        let label = cell.viewWithTag(2) as! UILabel
+        label.text = String(hex: color)
+        
+        return cell
     }
 }

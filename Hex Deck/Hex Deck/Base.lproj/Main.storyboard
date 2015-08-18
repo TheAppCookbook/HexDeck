@@ -47,7 +47,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v1-7I-Rk9" customClass="CardView" customModule="Hex_Deck" customModuleProvider="target">
+                                                <view userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v1-7I-Rk9" customClass="CardView" customModule="Hex_Deck" customModuleProvider="target">
                                                     <rect key="frame" x="14" y="0.0" width="70" height="70"/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.81568627449999997" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <userDefinedRuntimeAttributes>
@@ -68,7 +68,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#DED0FE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVP-qS-BQO">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#DED0FE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVP-qS-BQO">
                                                     <rect key="frame" x="14" y="78" width="70" height="21"/>
                                                     <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -105,6 +105,7 @@
                     </view>
                     <connections>
                         <outlet property="cardStackView" destination="zzL-Gy-CUc" id="eEg-QB-U6o"/>
+                        <outlet property="collectionView" destination="m3L-Kv-g0j" id="BWd-IK-QES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
