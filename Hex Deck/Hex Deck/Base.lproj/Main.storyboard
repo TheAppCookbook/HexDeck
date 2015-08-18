@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j5Q-Oc-Szf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -139,7 +139,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RippedCardBottom" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-fS-VEn">
-                                <rect key="frame" x="163" y="351" width="274" height="209"/>
+                                <rect key="frame" x="163" y="411" width="274" height="209"/>
                                 <color key="tintColor" red="0.98823529409999999" green="0.0" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FJm-fS-VEn" secondAttribute="height" multiplier="274:209" id="8St-4j-d9d"/>
@@ -151,23 +151,23 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whoops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foG-4n-4HK">
+                                <rect key="frame" x="176" y="291" width="249" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="PeJ-DB-Tw9"/>
+                                    <constraint firstAttribute="height" constant="36" id="TBI-hM-cWx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be careful when you see someone else's fingerprints!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-zr-RCZ">
-                                <rect key="frame" x="176" y="298" width="249" height="47"/>
+                                <rect key="frame" x="176" y="335" width="249" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="249" id="6SC-mL-ABn"/>
                                     <constraint firstAttribute="height" constant="47" id="XAV-xr-U95"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whoops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foG-4n-4HK">
-                                <rect key="frame" x="176" y="269" width="249" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="249" id="PeJ-DB-Tw9"/>
-                                    <constraint firstAttribute="height" constant="21" id="TBI-hM-cWx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -177,16 +177,16 @@
                         <constraints>
                             <constraint firstItem="lYz-zr-RCZ" firstAttribute="top" secondItem="foG-4n-4HK" secondAttribute="bottom" constant="8" id="3p7-Rh-1RR"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="trailing" secondItem="ZmX-u9-PYj" secondAttribute="trailing" constant="25" id="9DP-sq-fvd"/>
-                            <constraint firstItem="foG-4n-4HK" firstAttribute="top" secondItem="dvz-4n-Akl" secondAttribute="bottom" constant="20" id="Ama-WL-o05"/>
+                            <constraint firstItem="foG-4n-4HK" firstAttribute="top" secondItem="dvz-4n-Akl" secondAttribute="bottom" constant="42" id="Ama-WL-o05"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="width" secondItem="FJm-fS-VEn" secondAttribute="width" id="Cbo-KY-CMH"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="leading" secondItem="ZmX-u9-PYj" secondAttribute="leading" constant="-30" id="Gzk-WA-TuG"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="top" secondItem="ZmX-u9-PYj" secondAttribute="bottom" constant="-46" id="Nxy-pi-QET"/>
                             <constraint firstAttribute="centerX" secondItem="dvz-4n-Akl" secondAttribute="centerX" id="Xgb-bu-Ghc"/>
-                            <constraint firstItem="ba6-em-rjk" firstAttribute="top" secondItem="FJm-fS-VEn" secondAttribute="bottom" constant="40" id="Ye8-3U-HGO"/>
+                            <constraint firstItem="ba6-em-rjk" firstAttribute="top" secondItem="FJm-fS-VEn" secondAttribute="bottom" constant="-20" id="Ye8-3U-HGO"/>
                             <constraint firstItem="lYz-zr-RCZ" firstAttribute="centerX" secondItem="foG-4n-4HK" secondAttribute="centerX" id="gUD-HG-07B"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="centerX" secondItem="FJm-fS-VEn" secondAttribute="centerX" id="kOr-lA-Vjf"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="top" secondItem="vZx-Xs-NRG" secondAttribute="bottom" constant="20" id="l4k-RR-cOc"/>
-                            <constraint firstItem="FJm-fS-VEn" firstAttribute="top" secondItem="dvz-4n-Akl" secondAttribute="bottom" constant="102" id="q5i-FN-KDW"/>
+                            <constraint firstItem="FJm-fS-VEn" firstAttribute="top" secondItem="dvz-4n-Akl" secondAttribute="bottom" constant="162" id="q5i-FN-KDW"/>
                             <constraint firstItem="dvz-4n-Akl" firstAttribute="centerX" secondItem="foG-4n-4HK" secondAttribute="centerX" constant="-0.5" id="xcR-MO-Tff"/>
                         </constraints>
                         <connections>
