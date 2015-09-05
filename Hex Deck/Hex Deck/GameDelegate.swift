@@ -19,7 +19,7 @@ class GameDelegate: NSObject {
     static let DidReceiveGameOverNotification: String = "GameDelegateDidReceiveGameOverNotification"
     
     // MARK: Properties
-    private let socketURL: NSURL = NSURL(string: "ws://10.0.1.7:5000")!
+    private let socketURL: NSURL = NSURL(string: "ws://127.0.0.1:5000")!
     private var webSocket: SRWebSocket {
         didSet {
             self.webSocket.delegate = self
@@ -53,14 +53,14 @@ class GameDelegate: NSObject {
             "event": "drag_started",
             "player_id": GKLocalPlayer.localPlayer().playerID,
             "location": NSStringFromCGPoint(point)
-        ])
+        ] as! AnyObject)
     }
     
     func cardDragWasCanceled() {
         self.webSocket(self.webSocket, sendMessage: [
             "event": "drag_canceled",
             "player_id": GKLocalPlayer.localPlayer().playerID
-        ])
+        ] as! AnyObject)
     }
     
     func cardDragWasCompleted() {
@@ -68,15 +68,14 @@ class GameDelegate: NSObject {
         self.webSocket(self.webSocket, sendMessage: [
             "event": "drag_completed",
             "player_id": GKLocalPlayer.localPlayer().playerID
-        ])
+        ] as! AnyObject)
     }
 }
 
 extension GameDelegate: SRWebSocketDelegate {
     func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
-        let eventInfo: NSDictionary = NSJSONSerialization.JSONObjectWithData(message.dataUsingEncoding(NSUTF8StringEncoding)!,
-            options: nil,
-            error: nil) as! NSDictionary
+        let eventInfo: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(message.dataUsingEncoding(NSUTF8StringEncoding)!,
+            options: []) as! NSDictionary
         
         switch (eventInfo["event"] as! String) {
         case "connection":
@@ -111,14 +110,13 @@ extension GameDelegate: SRWebSocketDelegate {
                 object: nil)
             
         default:
-            println("Unhandled event \(eventInfo)")
+            print("Unhandled event \(eventInfo)")
         }
     }
     
     func webSocket(webSocket: SRWebSocket!, sendMessage message: AnyObject!) {
-        let data = NSJSONSerialization.dataWithJSONObject(message,
-            options: nil,
-            error: nil)!
+        let data = try! NSJSONSerialization.dataWithJSONObject(message,
+            options: [])
         let string = NSString(data: data, encoding: NSUTF8StringEncoding)
         webSocket.send(string)
     }
@@ -144,13 +142,13 @@ extension GameDelegate { // Authenication Handlers
         }
         
         self.authCompletion = completion
-        GKLocalPlayer.localPlayer().authenticateHandler = { (authVC: UIViewController!, error: NSError!) in
+        GKLocalPlayer.localPlayer().authenticateHandler = { (authVC: UIViewController?, error: NSError?) in
             if GKLocalPlayer.localPlayer().authenticated {
                 self.authCompletion?()
                 self.authCompletion = nil
             } else if authVC != nil {
                 let rootVC = UIApplication.sharedApplication().delegate?.window??.rootViewController
-                rootVC?.presentViewController(authVC, animated: true) { }
+                rootVC?.presentViewController(authVC!, animated: true) { }
             } else {
                 self.authCompletion?()
                 self.authCompletion = nil

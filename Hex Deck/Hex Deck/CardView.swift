@@ -32,7 +32,7 @@ import UIKit
     
     @IBInspectable var shadowColor: UIColor {
         get {
-            return UIColor(CGColor: self.layer.shadowColor)!
+            return UIColor(CGColor: self.layer.shadowColor!)
         }
         
         set {
@@ -78,17 +78,17 @@ import UIKit
     }
     
     // MARK: Touch Handlers
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.originalOrigin = self.frame.origin
-        self.tapHandler?((touches.first as! UITouch).locationInView(self.superview))
+        self.tapHandler?((touches.first)!.locationInView(self.superview))
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
         
-        let touch = touches.first as? UITouch
-        if var location = touch?.locationInView(self.superview),
-           var previousLocation = touch?.previousLocationInView(self.superview) {
+        let touch = touches.first
+        if let location = touch?.locationInView(self.superview),
+           let previousLocation = touch?.previousLocationInView(self.superview) {
                 var frame = self.frame
             
                 var newY = frame.origin.y
@@ -106,7 +106,7 @@ import UIKit
         }
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         if self.anchored {
             UIView.animateWithDuration(0.33) {

@@ -26,6 +26,6 @@ extension UIColor {
 
 extension String {
     init(hex: Int) {
-        self.init(stringLiteral: NSString(format:"#%06X", hex) as! String)
+        self.init(stringLiteral: NSString(format:"#%06X", hex) as String)
     }
 }

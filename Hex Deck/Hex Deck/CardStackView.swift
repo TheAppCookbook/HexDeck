@@ -59,7 +59,7 @@ class CardStackView: UIView {
         
         cardView?.frame = self.bounds
         
-        let subviews = (cardView?.subviews as? [UIView])?.filter { $0.isKindOfClass(TapView.self) }
+        let subviews = cardView?.subviews.filter { $0.isKindOfClass(TapView.self) }
         for subview in subviews ?? [] {
             subview.removeFromSuperview()
         }

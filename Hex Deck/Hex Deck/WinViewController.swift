@@ -50,7 +50,7 @@ extension WinViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardViewCell",
-            forIndexPath: indexPath) as! UICollectionViewCell
+            forIndexPath: indexPath) as UICollectionViewCell
         
         let color = self.colors[indexPath.row]
         

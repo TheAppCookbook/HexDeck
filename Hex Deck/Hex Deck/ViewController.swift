@@ -152,7 +152,7 @@ class ViewController: UIViewController {
     // MARK: Tap Handlers
     func addTapViewAtPoint(point: CGPoint, forUser userID: String) {
         let size: CGFloat = 90.0
-        var frame = CGRect(x: point.x - (size / 2.0),
+        let frame = CGRect(x: point.x - (size / 2.0),
             y: point.y - (size / 2.0),
             width: size,
             height: size)
@@ -171,8 +171,8 @@ class ViewController: UIViewController {
     func removeTapViewsForIdentifiers(identifiers: [String]) {
         let tapViews = self.cardStackView.topCardView?.subviews.filter {
             $0.isKindOfClass(TapView.self) &&
-            find(identifiers, ($0 as! TapView).identifier) != nil
-        } as! [UIView]
+            identifiers.indexOf(($0 as! TapView).identifier) != nil
+        } as [UIView]!
         
         for tapView in tapViews  {
             tapView.removeFromSuperview()
@@ -199,12 +199,12 @@ extension ViewController: CardStackViewDataSource {
 
 extension ViewController: CardStackViewDelegate {
     func cardStackView(cardStackView: CardStackView, cardWasTappedAtPoint point: CGPoint) {
-        self.addTapViewAtPoint(point, forUser: GKLocalPlayer.localPlayer().playerID)
+        self.addTapViewAtPoint(point, forUser: GKLocalPlayer.localPlayer().playerID!)
     }
     
     func cardStackViewCardWasReleased(cardStackView: CardStackView) {
         AppDelegate.sharedGameDelegate.cardDragWasCanceled()
-        self.removeTapViewsForIdentifiers([GKLocalPlayer.localPlayer().playerID])
+        self.removeTapViewsForIdentifiers([GKLocalPlayer.localPlayer().playerID!])
     }
     
     func cardStackView(cardStackView: CardStackView, cardWasSwipedOffFromIndex: Int, swipedDown: Bool) {
@@ -230,9 +230,9 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CardViewCell",
-            forIndexPath: indexPath) as! UICollectionViewCell
+            forIndexPath: indexPath) as UICollectionViewCell
         
-        let color = AppDelegate.sharedGameDelegate.game!.localPlayerColors.reverse()[indexPath.item]
+        let color = Array(AppDelegate.sharedGameDelegate.game!.localPlayerColors.reverse())[indexPath.item]
         
         let cardView = cell.viewWithTag(1) as! CardView
         cardView.backgroundColor = UIColor(hex: color)

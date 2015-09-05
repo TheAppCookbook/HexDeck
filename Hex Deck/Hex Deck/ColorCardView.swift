@@ -45,7 +45,7 @@ class ColorCardView: CardView {
     }
     
     // MARK: Touch Handlers
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if CGRectGetMidY(self.frame) > (self.frame.height / 2.0) {
             self.swipeDown()
             return
